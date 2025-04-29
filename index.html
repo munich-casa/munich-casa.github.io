@@ -191,9 +191,17 @@ const imageData = {
 let currentImages = [];
 let currentIndex = 0;
 
+function preloadImages(images) {
+    images.forEach(src => {
+        const img = new Image();
+        img.src = src;
+    });
+}
+
 function openGallery(room) {
     currentImages = imageData[room];
     currentIndex = 0;
+    preloadImages(currentImages);
     updateLightbox();
     document.getElementById('lightbox').style.display = 'flex';
 }
