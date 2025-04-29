@@ -1,82 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flat Offer</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            background-color: #f7f8fc;
-            margin: 0;
-            padding: 0;
-        }
-        .container {
-            max-width: 900px;
-            margin: auto;
-            padding: 20px;
-        }
-        h1 {
-            color: #333;
-            text-align: center;
-        }
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 10px;
-            margin: 20px 0;
-        }
-        .gallery img {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-            border-radius: 8px;
-        }
-        .description {
-            background-color: #fff;
-            padding: 15px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        .contact-form {
-            background-color: #fff;
-            padding: 15px;
-            margin-top: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        .contact-form input,
-        .contact-form textarea {
-            width: 100%;
-            padding: 8px;
-            margin-top: 5px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-        .contact-form button {
-            background-color: #5a9;
-            color: white;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        .contact-form button:hover {
-            background-color: #4a8;
-        }
-
-        @media (max-width: 600px) {
-            .container {
-                padding: 10px;
-            }
-            .gallery img {
-                height: 120px;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flat Offer</title>
+<style>
+    html {
+        scroll-behavior: smooth;
+    }
+    body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        background-color: #f7f8fc;
+        margin: 0;
+        padding: 0;
+    }
+    .container {
+        max-width: 900px;
+        margin: auto;
+        padding: 20px;
+    }
+    h1 {
+        color: #333;
+        text-align: center;
+    }
+    h2 {
+        color: #333;
+        text-align: left;
+    }
+    .gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 10px;
+        margin: 20px 0;
+    }
+    .gallery img {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 8px;
+        cursor: pointer;
+    }
+    .description, .contact-form {
+        background-color: #fff;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        margin-bottom: 20px;
+    }
+    .contact-form input, .contact-form textarea {
+        width: 100%;
+        padding: 8px;
+        margin-top: 5px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+    .contact-form button {
+        background-color: #5a9;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    .contact-form button:hover {
+        background-color: #4a8;
+    }
+    .lightbox {
+        display: none;
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: rgba(0,0,0,0.8);
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+    }
+    .lightbox-content {
+        position: relative;
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        max-width: 80%;
+        max-height: 80%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .lightbox img {
+        max-width: 100%;
+        max-height: 70vh;
+        border-radius: 8px;
+    }
+    .close-btn {
+        position: absolute;
+        top: 20px;
+        right: 30px;
+        font-size: 30px;
+        color: white;
+        cursor: pointer;
+    }
+    .nav-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 40px;
+        color: white;
+        background: rgba(0,0,0,0.4);
+        border: none;
+        cursor: pointer;
+        padding: 10px;
+        border-radius: 50%;
+    }
+    .prev-btn { left: 20px; }
+    .next-btn { right: 20px; }
+    @media (max-width: 600px) {
+        .container { padding: 10px; }
+        .gallery img { height: 120px; }
+    }
+</style>
 </head>
 <body>
 
@@ -84,10 +128,10 @@
     <h1>Beautiful Flat for Rent</h1>
 
     <div class="gallery">
-        <img src="https://raw.githubusercontent.com/munich-casa/munich-casa.github.io/refs/heads/main/living_room.png" alt="Living Room">
-        <img src="https://raw.githubusercontent.com/munich-casa/munich-casa.github.io/refs/heads/main/kitchen.png" alt="Kitchen">
-        <img src="https://raw.githubusercontent.com/munich-casa/munich-casa.github.io/refs/heads/main/bedroom.png" alt="Bedroom">
-        <img src="https://raw.githubusercontent.com/munich-casa/munich-casa.github.io/refs/heads/main/bathroom.png" alt="Bathroom">
+        <img src="https://raw.githubusercontent.com/munich-casa/munich-casa.github.io/refs/heads/main/living_room.png" alt="Living Room" onclick="openGallery('living-room')">
+        <img src="https://raw.githubusercontent.com/munich-casa/munich-casa.github.io/refs/heads/main/kitchen.png" alt="Kitchen" onclick="openGallery('kitchen')">
+        <img src="https://raw.githubusercontent.com/munich-casa/munich-casa.github.io/refs/heads/main/bedroom.png" alt="Bedroom" onclick="openGallery('bedroom')">
+        <img src="https://raw.githubusercontent.com/munich-casa/munich-casa.github.io/refs/heads/main/bathroom.png" alt="Bathroom" onclick="openGallery('bathroom')">
     </div>
 
     <div class="description">
@@ -102,17 +146,71 @@
         <form>
             <label>Name:</label>
             <input type="text" placeholder="Your Name" required>
-
             <label>Email:</label>
             <input type="email" placeholder="Your Email" required>
-
             <label>Message:</label>
             <textarea rows="4" placeholder="Your Message" required></textarea>
-
             <button type="submit">Send</button>
         </form>
     </div>
 </div>
+
+<div class="lightbox" id="lightbox">
+    <span class="close-btn" onclick="closeLightbox()">&times;</span>
+    <button class="nav-btn prev-btn" onclick="changeImage(-1)">&lt;</button>
+    <div class="lightbox-content">
+        <img id="lightbox-image" src="" alt="Gallery image">
+    </div>
+    <button class="nav-btn next-btn" onclick="changeImage(1)">&gt;</button>
+</div>
+
+<script>
+const imageData = {
+    'living-room': [
+        'https://raw.githubusercontent.com/munich-casa/munich-casa.github.io/refs/heads/main/living_room.png',
+        'https://raw.githubusercontent.com/munich-casa/munich-casa.github.io/refs/heads/main/living_room_detail1.png',
+        'https://raw.githubusercontent.com/munich-casa/munich-casa.github.io/refs/heads/main/living_room_detail2.png'
+    ],
+    'kitchen': [
+        'https://raw.githubusercontent.com/munich-casa/munich-casa.github.io/refs/heads/main/kitchen.png',
+        'https://raw.githubusercontent.com/munich-casa/munich-casa.github.io/refs/heads/main/kitchen_detail1.png',
+        'https://raw.githubusercontent.com/munich-casa/munich-casa.github.io/refs/heads/main/kitchen_detail2.png'
+    ],
+    'bedroom': [
+        'https://raw.githubusercontent.com/munich-casa/munich-casa.github.io/refs/heads/main/bedroom.png',
+        'https://raw.githubusercontent.com/munich-casa/munich-casa.github.io/refs/heads/main/bedroom_detail1.png',
+        'https://raw.githubusercontent.com/munich-casa/munich-casa.github.io/refs/heads/main/bedroom_detail2.png'
+    ],
+    'bathroom': [
+        'https://raw.githubusercontent.com/munich-casa/munich-casa.github.io/refs/heads/main/bathroom.png',
+        'https://raw.githubusercontent.com/munich-casa/munich-casa.github.io/refs/heads/main/bathroom_detail1.png',
+        'https://raw.githubusercontent.com/munich-casa/munich-casa.github.io/refs/heads/main/bathroom_detail2.png'
+    ]
+};
+
+let currentImages = [];
+let currentIndex = 0;
+
+function openGallery(room) {
+    currentImages = imageData[room];
+    currentIndex = 0;
+    updateLightbox();
+    document.getElementById('lightbox').style.display = 'flex';
+}
+
+function closeLightbox() {
+    document.getElementById('lightbox').style.display = 'none';
+}
+
+function updateLightbox() {
+    document.getElementById('lightbox-image').src = currentImages[currentIndex];
+}
+
+function changeImage(direction) {
+    currentIndex = (currentIndex + direction + currentImages.length) % currentImages.length;
+    updateLightbox();
+}
+</script>
 
 </body>
 </html>
